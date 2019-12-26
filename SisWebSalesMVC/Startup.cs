@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using SisWebSalesMVC.Models;
 using SisWebSalesMVC.Data;
+using SisWebSalesMVC.Services;
 
 namespace SisWebSalesMVC
 {
@@ -32,6 +33,7 @@ namespace SisWebSalesMVC
                     builder.MigrationsAssembly("SisWebSalesMVC")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
