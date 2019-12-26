@@ -27,8 +27,8 @@ namespace SisWebSalesMVC
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<SisWebSalesMVCContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SisWebSalesMVCContext")));
+            services.AddDbContext<SisWebSalesMVCContext>(options => options.UseMySql(Configuration.GetConnectionString("SisWebSalesMVCContext"), builder =>
+                    builder.MigrationsAssembly("SisWebSalesMVC")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
