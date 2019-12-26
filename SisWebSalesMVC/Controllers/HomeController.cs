@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SisWebSalesMVC.Models;
+using SisWebSalesMVC.Models.ViewModels;
 
 namespace SisWebSalesMVC.Controllers
 {
