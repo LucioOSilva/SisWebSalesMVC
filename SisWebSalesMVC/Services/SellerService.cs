@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SisWebSalesMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using SisWebSalesMVC.Services.Exceptions;
 
 namespace SisWebSalesMVC.Services
 {
@@ -38,6 +39,21 @@ namespace SisWebSalesMVC.Services
             _context.Seller.Remove(obj);
             _context.SaveChanges();
         }
+        public void Update(Seller obj)
+        {
+            if (!_context.Seller.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id not Found");
+            }
+            try {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+            }
 
     }
 }
