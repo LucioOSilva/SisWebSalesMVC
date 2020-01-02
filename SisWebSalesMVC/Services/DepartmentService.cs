@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SisWebSalesMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SisWebSalesMVC.Services
 {
@@ -16,9 +17,9 @@ namespace SisWebSalesMVC.Services
         }
 
 
-        public List<Department> Findall()
+        public async Task<List<Department>> FindallAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
 
         public void Insert(Seller obj)
